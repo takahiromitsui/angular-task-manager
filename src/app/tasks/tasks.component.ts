@@ -11,8 +11,13 @@ import { Tasks } from './taks.model';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
+  dummyTasks = DUMMY_TASKS;
   @Input({ required: true }) tasks!: Tasks;
   get selectedUserTasks() {
-    return DUMMY_TASKS.filter((task) => task.userId === this.tasks.userId);
+    return this.dummyTasks.filter((task) => task.userId === this.tasks.userId);
+  }
+
+  onCompleteTask(id: string) {
+    this.dummyTasks = this.dummyTasks.filter((task) => task.id !== id);
   }
 }
