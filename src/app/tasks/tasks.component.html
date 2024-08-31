@@ -1,13 +1,15 @@
 <section id="tasks">
   <header>
-    <h2>{{ name }}'s Tasks</h2>
+    <h2>{{ tasks.name }}'s Tasks</h2>
     <menu>
       <button>Add Task</button>
     </menu>
   </header>
   <ul>
-    <li>
-      <app-task />
-    </li>
+    @for (item of selectedUserTasks; track $index) {
+      <li [id]="item.id">
+        <app-task [task]="item"></app-task>
+      </li>
+    }
   </ul>
 </section>
