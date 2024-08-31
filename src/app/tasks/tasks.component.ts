@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { DUMMY_TASKS } from '../dummy-tasks';
-import { Tasks } from './taks.model';
+import { NewTaskData, Tasks } from './tasks.model';
 import { NewTaskComponent } from './new-task/new-task.component';
 
 @Component({
@@ -29,6 +29,15 @@ export class TasksComponent {
   }
 
   onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
+  onAddTask(taskData: NewTaskData) {
+    this.dummyTasks.unshift({
+      id: Date.now().toString(),
+      userId: this.tasks.userId,
+      ...taskData,
+    });
     this.isAddingTask = false;
   }
 }
