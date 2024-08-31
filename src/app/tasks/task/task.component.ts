@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DUMMY_TASKS } from '../../dummy-tasks';
-
-type Task = (typeof DUMMY_TASKS)[number];
+import { Task } from './task.model';
 
 @Component({
   selector: 'app-task',
